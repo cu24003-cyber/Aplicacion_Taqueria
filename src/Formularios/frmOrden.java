@@ -662,6 +662,11 @@ public class frmOrden extends javax.swing.JFrame {
 
         int fila = tblListaOrdenes.getSelectedRow();
         String estadoActual = modeloOrdenes.getValueAt(fila, 4).toString();
+         if (!estadoActual.equals("PROCESADA")) {
+            javax.swing.JOptionPane.showMessageDialog(this,"Solo se pueden despachar órdenes en estado Procesada.");
+            return;
+        }
+
         if (estadoActual.equals("ANULADA")) {
             javax.swing.JOptionPane.showMessageDialog(this, "Esta orden ya está anulada.");
             return;

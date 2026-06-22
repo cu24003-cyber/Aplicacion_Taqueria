@@ -15,7 +15,7 @@ public class frmMenuRol extends javax.swing.JFrame {
     public frmMenuRol() {
         this.setUndecorated(true);
         initComponents();
-        this.setSize(520, 500);
+        this.setSize(520, 580);
         setLocationRelativeTo(null);
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/logo.png")).getImage());
         lblTitulo.setText("Taquería El Metapaneco");
@@ -79,6 +79,16 @@ public class frmMenuRol extends javax.swing.JFrame {
         btnOrdenes.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(new Color(70, 110, 200), 2),
                 BorderFactory.createEmptyBorder(20, 30, 20, 30)));
+        // ── Botón Usuarios ────────────────────────────────────────────
+        btnUsuarios.setBackground(new Color(155, 89, 182));
+        btnUsuarios.setForeground(Color.WHITE);
+        btnUsuarios.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        btnUsuarios.setFocusPainted(false);
+        btnUsuarios.setOpaque(true);
+        btnUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnUsuarios.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(110, 60, 140), 2),
+                BorderFactory.createEmptyBorder(20, 30, 20, 30)));
     }
 
     public void configurarSegunRol(Usuario u) {
@@ -90,6 +100,8 @@ public class frmMenuRol extends javax.swing.JFrame {
         btnProductos.setEnabled(false);
         btnCombos.setEnabled(false);
         btnOrdenes.setEnabled(false);
+        btnUsuarios.setEnabled(false);
+        btnUsuarios.setVisible(false);
 
         // Activar según rol
         switch (u.getRol()) {
@@ -97,6 +109,8 @@ public class frmMenuRol extends javax.swing.JFrame {
                 btnProductos.setEnabled(true);
                 btnCombos.setEnabled(true);
                 btnOrdenes.setEnabled(true);
+                btnUsuarios.setEnabled(true);
+                btnUsuarios.setVisible(true);
                 break;
             case "SUPERVISOR":
                 btnProductos.setEnabled(true);
@@ -135,6 +149,7 @@ public class frmMenuRol extends javax.swing.JFrame {
         btnCombos = new javax.swing.JButton();
         btnOrdenes = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
+        btnUsuarios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -181,6 +196,14 @@ public class frmMenuRol extends javax.swing.JFrame {
         });
         getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 80, 28));
 
+        btnUsuarios.setText("Agregar Usuarios");
+        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuariosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 493, 140, 80));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -211,6 +234,11 @@ public class frmMenuRol extends javax.swing.JFrame {
         orden.setVisible(true);
     }//GEN-LAST:event_btnOrdenesActionPerformed
 
+    private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
+        Formularios.frmUsuarios usuario = new Formularios.frmUsuarios();
+    usuario.setVisible(true);
+    }//GEN-LAST:event_btnUsuariosActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(() -> new frmMenuRol().setVisible(true));
@@ -221,6 +249,7 @@ public class frmMenuRol extends javax.swing.JFrame {
     private javax.swing.JButton btnCombos;
     private javax.swing.JButton btnOrdenes;
     private javax.swing.JButton btnProductos;
+    private javax.swing.JButton btnUsuarios;
     private javax.swing.JLabel lblBienvenido;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblRol;
