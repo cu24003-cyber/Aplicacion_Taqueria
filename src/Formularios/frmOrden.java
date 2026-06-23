@@ -662,8 +662,8 @@ public class frmOrden extends javax.swing.JFrame {
 
         int fila = tblListaOrdenes.getSelectedRow();
         String estadoActual = modeloOrdenes.getValueAt(fila, 4).toString();
-         if (!estadoActual.equals("PROCESADA")) {
-            javax.swing.JOptionPane.showMessageDialog(this,"Solo se pueden despachar órdenes en estado Procesada.");
+        if (!estadoActual.equals("PROCESADA")) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Solo se pueden despachar órdenes en estado Procesada.");
             return;
         }
 
@@ -893,6 +893,7 @@ public class frmOrden extends javax.swing.JFrame {
         if (u.getRol().equals("SUPERVISOR")) {
             btnHistorial.setVisible(true);
         }
+        listarOrdenes(); // refiltra la tabla ya con el rol correcto
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;

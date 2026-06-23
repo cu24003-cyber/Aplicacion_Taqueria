@@ -315,8 +315,16 @@ public class frmUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        if (txtID.getText().trim().isEmpty()) {
+        if (!editando) {
             javax.swing.JOptionPane.showMessageDialog(this, "Seleccione un mesero de la tabla.");
+            return;
+        }
+
+        int idUsuario = Integer.parseInt(txtID.getText());
+
+        if (usuarioDAO.tieneOrdenesProcesadas(idUsuario)) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "No se puede eliminar: este mesero tiene órdenes en estado Procesada pendientes de despachar o anular.");
             return;
         }
 
@@ -326,7 +334,7 @@ public class frmUsuarios extends javax.swing.JFrame {
             return;
         }
 
-        boolean res = usuarioDAO.eliminar(Integer.parseInt(txtID.getText()));
+        boolean res = usuarioDAO.eliminar(idUsuario);
         if (res) {
             javax.swing.JOptionPane.showMessageDialog(this, "Mesero eliminado correctamente.");
             listarMeseros();
