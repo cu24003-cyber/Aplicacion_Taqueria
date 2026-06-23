@@ -202,7 +202,7 @@ public class frmMenuRol extends javax.swing.JFrame {
                 btnUsuariosActionPerformed(evt);
             }
         });
-        getContentPane().add(btnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 493, 140, 80));
+        getContentPane().add(btnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 493, 290, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
